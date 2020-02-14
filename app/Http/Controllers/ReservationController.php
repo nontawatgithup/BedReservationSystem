@@ -18,19 +18,19 @@ class ReservationController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $ward = Ward::where('name_Ward', 'LIKE', "%$keyword%")
+            $reservation = Ward::where('name_Ward', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $ward = Ward::latest()->paginate($perPage);
+            $reservation = Ward::latest()->paginate($perPage);
         }
 
-        return view('index', compact('ward'));
+        return view('reservation', compact('reservation'));
     }
 
 
     public function create()
     {
-        return view('create');
+        return view('reservationCreate');
     }
 
 
@@ -40,38 +40,38 @@ class ReservationController extends Controller
         $requestData = $request->all();
         Ward::create($requestData);
 
-        return redirect('index')->with('flash_message', 'Post added!');
+        return redirect('reservation')->with('flash_message', 'Post added!');
     }
 
 
-    public function show($id_Ward)
+    public function show($id_Reservation)
     {
-        $ward = Ward::findOrFail($id_Ward);
+        $ward = Ward::findOrFail($id_Reservation);
 
-        return view('show', compact('ward'));
+        return view('reservationShow', compact('reservation'));
     }
 
-    public function edit($id_Ward)
+    public function edit($id_Reservation)
     {
-        $ward = Ward::findOrFail($id_Ward);
+        $ward = Ward::findOrFail($id_Reservation);
 
-        return view('edit', compact('ward','id_Ward'));
+        return view('reservationEdit', compact('reservation','id_Reservation'));
     }
 
-    public function update(Request $request, $id_Ward)
+    public function update(Request $request, $id_Reservation)
     {
 
         $requestData = $request->all();
-        $ward = Ward::findOrFail($id_Ward);
+        $ward = Ward::findOrFail($id_Reservation);
         $ward->update($requestData);
 
-        return redirect('index')->with('flash_message', 'อัพเดตข้อมูลเรียบร้อย');
+        return redirect('reservation')->with('flash_message', 'อัพเดตข้อมูลเรียบร้อย');
     }
 
-    public function destroy($id_Ward)
+    public function destroy($id_Reservation)
     {
-        Ward::destroy($id_Ward);
+        Ward::destroy($id_Reservation);
 
-        return redirect('index')->with('flash_message', 'ลบข้อมูลเรียบร้อย');
+        return redirect('reservation')->with('flash_message', 'ลบข้อมูลเรียบร้อย');
     }
 }

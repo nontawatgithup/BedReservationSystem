@@ -4,6 +4,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/t2', function () {
+    return view('t2');
+});
 
 Route::get('/ward','WardController@index');
 Route::get('/create','WardController@create');

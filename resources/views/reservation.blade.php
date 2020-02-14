@@ -31,7 +31,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($posts  as $item)
+                                @foreach($reservation  as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->title }}</td>
@@ -49,7 +49,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div class="pagination-wrapper"> {!! $posts ->appends(['search' => Request::get('search')])->render() !!} </div>
+                            <div class="pagination-wrapper"> {!! $reservation ->appends(['search' => Request::get('search')])->render() !!} </div>
                         </div>
                     </div>
                 </div>
