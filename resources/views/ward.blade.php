@@ -1,4 +1,4 @@
-
+@include('popup.PopupCreateWard')
 @extends('layouts.argon_template')
 @section('content')
     <div class="container">
@@ -7,11 +7,11 @@
                 <div class="card">
                     <div class="card-header">จัดการวอร์ด</div>
                     <div class="card-body">
-                        <a href="{{ url('/create') }}" class="btn btn-success btn-sm" title="เพิ่มใหม่">
-                            <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มวอร์ด
-                        </a>
+                        <div class="text-left">
+                            <button class="btn btn-info" aria-hidden="true" data-toggle="modal" data-target="#add_user" >เพิ่มข้อมูล</button>
+                        </div>
                         <form method="GET" action="{{ url('/ward') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
-                            <div class="input-group">
+                            <div class="input-group" style="float:left">
                                 <input type="text" class="form-control" name="search" placeholder="ค้นหา..." value="{{ request('ค้นหา') }}">
                                 <span class="input-group-append">
                                     <button class="btn btn-secondary" type="submit">
